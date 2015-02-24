@@ -6761,11 +6761,15 @@
     // See http://requirejs.org/docs/api.html#config-shim
     root._ = _;
 
-    // define as an anonymous module so, through path mapping, it can be
-    // referenced as the "underscore" module
-    define(function() {
-      return _;
-    });
+    try {
+        // define as an anonymous module so, through path mapping, it can be
+        // referenced as the "underscore" module
+        define(function() {
+          return _;
+        });
+    } 
+    catch (ex) {
+    }
   }
   // check for `exports` after `define` in case a build optimizer adds an `exports` object
   else if (freeExports && freeModule) {
